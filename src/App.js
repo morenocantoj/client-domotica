@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Button, Col } from 'react-bootstrap';
 
 class App extends Component {
+  handleClick(event) {
+    event.preventDefault()
+    console.log("cubalibre")
+  }
   render() {
     return (
       <div className="App">
@@ -13,6 +18,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Col md={3}>
+          <Button bsStyle="primary" onClick={ (e) => this.handleClick(e)}>Me abruma</Button>
+        </Col>
       </div>
     );
   }
