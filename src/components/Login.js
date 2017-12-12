@@ -54,7 +54,8 @@ class Login extends Component {
     /**
     * Tries to login to API with username and password
     */
-    handleLogin() {
+    handleLogin(e) {
+      e.preventDefault();
       this.props.login(this.state.login, this.state.password)
     }
 
@@ -62,13 +63,7 @@ class Login extends Component {
         return (
             <form>
                 <Col md={12} className="header-login">
-                  {
-                    ((this.props.user !== undefined) ?
-                      <h1>Buenis {this.props.user.name}</h1>
-                      :
                       <h1>Iniciar Sesión</h1>
-                      )
-                  }
 
                 </Col>
 
@@ -86,7 +81,7 @@ class Login extends Component {
                             value={this.state.password}/>
                         </FormGroup>
                         <FormGroup>
-                            <Button type="button" className="btn-info" onClick={() => this.handleLogin()}
+                            <Button type="submit" className="btn-info" onClick={(e) => this.handleLogin(e)}
                               disabled={!this.state.formValid}>
                                 Iniciar Sesión</Button>
                         </FormGroup>
