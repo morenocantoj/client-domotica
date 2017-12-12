@@ -1,6 +1,7 @@
 import { API_URL } from './urls'
 
-export const login = (user) => {
+export const signIn = (user) => {
+  console.log("signIn")
     const url = API_URL+'/login';
 
     return fetch(url, {
