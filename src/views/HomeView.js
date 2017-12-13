@@ -22,8 +22,10 @@ class HomeView extends Component {
     return (
       <div>
         <NavbarContainer/>
-        <Home {...this.props}/>
-        <LinkContainer to="/login"><Button>VIVA ESPAÑA</Button></LinkContainer>
+        <Col md={12} lg={12}>
+          <Home {...this.props}/>
+          <LinkContainer to="/login"><Button>Volver Atrás</Button></LinkContainer>
+        </Col>
       </div>
     )
   }

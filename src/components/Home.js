@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import './styles/Login.css';
-import {getHouses} from '../API/methods'
+import { Col, Row, Legend } from 'react-bootstrap';
+import './styles/Home.css';
+import { getHouses } from '../API/methods';
+import ReactTable from 'react-table';
+import "react-table/react-table.css";
 
 class Home extends Component {
 
@@ -9,13 +11,10 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      houses: []
+      houses: this.getHouses()
     }
   }
 
-  componentWillMount() {
-    this.getHouses()
-  }
 
   getHouses() {
     getHouses({token: this.props.user.token}).then((body) => {
@@ -27,10 +26,26 @@ class Home extends Component {
   }
 
   render() {
+    const { houses } = this.state;
+
     return (
       <div>
-        <h2>Hola {this.props.user.name}</h2>
-      </div>
+        <legend><h2>Inmuebles <small>{this.props.user.name}</small></h2></legend>
+        <ReactTable
+          data= {houses}
+          columns = {[
+            {
+              Header: "Nombre",
+              accessor: "nombre"
+            },
+            {
+              Header: "URL",
+              accessor: "url"
+            }
+          ]}
+          defaultPageSize={10}
+          className="-striped -hightlight"/>
+        </div>
     );
   }
 }
