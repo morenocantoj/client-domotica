@@ -4,7 +4,7 @@ import { login } from '../actions/auth'
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.auth.user
   }
 };
 

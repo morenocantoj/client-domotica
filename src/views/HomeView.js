@@ -24,7 +24,6 @@ class HomeView extends Component {
         <NavbarContainer/>
         <Col md={12} lg={12}>
           <Home {...this.props}/>
-          <LinkContainer to="/login"><Button>Volver Atrás</Button></LinkContainer>
         </Col>
       </div>
     )

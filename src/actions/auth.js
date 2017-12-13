@@ -1,6 +1,8 @@
 import { signIn } from '../API/methods';
-export const LOGIN = 'LOGIN'
-export const LOGOUT = 'LOGOUT'
+import { toastr } from 'react-redux-toastr';
+
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
 const loginSuccess = (user) => {
   console.log("logginSuccess")
@@ -23,9 +25,11 @@ export const login = (username, password) => {
         name: username,
         token: body.token
       }
+      toastr.success("Login", "Te has logueado correctamente");
       dispatch(loginSuccess(user));
     })
     .catch((error) => {
+      toastr.error("Login", "Usuario o contraseña no válidos");
       console.log("Error autenticando");
     });
   };

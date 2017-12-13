@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Row, Legend } from 'react-bootstrap';
+import { Col, Row, Legend, Button } from 'react-bootstrap';
 import './styles/Home.css';
 import { getHouses } from '../API/methods';
 import ReactTable from 'react-table';
+import { LinkContainer } from 'react-router-bootstrap';
 import "react-table/react-table.css";
 
 class Home extends Component {
@@ -39,12 +40,21 @@ class Home extends Component {
               accessor: "nombre"
             },
             {
-              Header: "URL",
-              accessor: "url"
+              Header: "Acciones",
+              accessor: "id",
+              maxWidth: 200,
+              Cell: row => (
+                <div>
+                <LinkContainer to={this.props.location.pathname+"/casas/"+row.value} className="btn btn-info button">
+                  <i className="fa fa-pencil"/></LinkContainer>
+                <LinkContainer to={this.props.location.pathname+"/casas/"+row.value} className="btn btn-success button">
+                  <i className="fa fa-eye"/></LinkContainer>
+                </div>
+              )
             }
           ]}
-          defaultPageSize={10}
-          className="-striped -hightlight"/>
+          defaultPageSize={5}
+          className="-striped"/>
         </div>
     );
   }
