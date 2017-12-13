@@ -17,11 +17,8 @@ const logoutSuccess = () => {
 }
 
 export const login = (username, password) => {
-  console.log("login larios")
   return function (dispatch)  {
-    console.log("elfary entra dispatch")
     signIn({login: username, password: password}).then((body) => {
-      console.log("login")
       const user = {
         name: username,
         token: body.token

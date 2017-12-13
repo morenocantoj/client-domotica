@@ -16,3 +16,22 @@ export const signIn = (user) => {
         }
     });
 }
+
+export const getHouses = (body) => {
+  console.log("GET Houses");
+  const url = API_URL+'/casas';
+
+  return fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + body.token
+    }
+    })
+    .then(function (response) {
+      return response.json();
+    })
+    .catch(function (error) {
+      console.log("Error geting data from ");
+      return error.json();
+    });
+}

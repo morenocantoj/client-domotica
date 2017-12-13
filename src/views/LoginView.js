@@ -7,7 +7,6 @@ import { Redirect } from 'react-router-dom';
 
 class LoginView extends Component {
   render () {
-    console.log("Vuelva: " + this.props.user);
     if(this.props.user !== undefined) {
       return (<Redirect to="/home"></Redirect>)
     }

@@ -3,6 +3,7 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import NavbarContainer from '../containers/NavbarContainer';
+import Home from '../components/Home';
 
 class HomeView extends Component {
 
@@ -21,7 +22,7 @@ class HomeView extends Component {
     return (
       <div>
         <NavbarContainer/>
-        <h1>HOME! {this.props.user.name}</h1>
+        <Home {...this.props}/>
         <LinkContainer to="/login"><Button>VIVA ESPAÑA</Button></LinkContainer>
       </div>
     )
