@@ -14,7 +14,7 @@ const loginSuccess = (user) => {
 
 const logoutSuccess = () => {
   return {
-    type: LOGOUT,
+    type: LOGOUT
   }
 }
 
@@ -32,5 +32,13 @@ export const login = (username, password) => {
       toastr.error("Login", "Usuario o contraseña no válidos");
       console.log("Error autenticando");
     });
+  };
+}
+
+export const logout = () => {
+  return function (dispatch) {
+    toastr.warning("Sesión", "Has cerrado sesión correctamente");
+    console.log("logout");
+    dispatch(logoutSuccess());
   };
 }

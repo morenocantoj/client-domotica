@@ -14,7 +14,7 @@ class LoginView extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Bienvenido a Iberrally domótica</h1>
+          <h1 className="App-title">Bienvenido a IberRally domótica</h1>
         </header>
         <Login {...this.props}></Login>
       </div>
