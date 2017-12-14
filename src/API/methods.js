@@ -35,3 +35,15 @@ export const getHouses = (body) => {
       return error.json();
     });
 }
+
+export const getHouse = (houseId) => {
+  console.log("GET House");
+  const url = API_URL + '/casas/' + houseId;
+
+  return fetch(url).then(function (response) {
+    return response.json();
+  })
+  .catch(function (error) {
+    return error.json();
+  })
+}

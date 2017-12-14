@@ -17,7 +17,6 @@ class Navigator extends Component {
   }
 
   render() {
-    console.log(this.props.user)
     if(this.props.user === undefined) {
       return (<Redirect to="/login"></Redirect>)
     }
