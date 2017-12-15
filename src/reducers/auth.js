@@ -6,7 +6,6 @@ const initialState = {
 }
 
 export default function reducer(state = initialState.user, action) {
-  console.log(action.user)
   switch (action.type) {
     case LOGIN:
       return Object.assign({}, state, {

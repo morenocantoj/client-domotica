@@ -13,7 +13,7 @@ class HouseView extends Component {
 
     this.state = {
       user : this.props.user,
-      house: []
+      house: {}
     }
   }
 

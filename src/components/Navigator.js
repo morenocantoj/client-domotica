@@ -34,7 +34,7 @@ class Navigator extends Component {
         <LinkContainer exact to="/">
           <NavItem>Casas</NavItem>
         </LinkContainer>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+        <NavDropdown title={this.props.user.name} id="basic-nav-dropdown">
           <MenuItem>Action</MenuItem>
           <MenuItem>Another action</MenuItem>
           <MenuItem>Something else here</MenuItem>

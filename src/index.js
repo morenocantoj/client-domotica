@@ -7,6 +7,14 @@ import store from './store/Store'
 import {Provider} from 'react-redux'
 import ReduxToastr from 'react-redux-toastr'
 
+  /*const warn = console.error;
+  console.error = function(warning) {
+    if (/(setState)/.test(warning)) {
+      throw new Error(warning);
+    }
+    warn.apply(console, arguments);
+  };*/
+
 ReactDOM.render((
 
   <Provider store={store}>
