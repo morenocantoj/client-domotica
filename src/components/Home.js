@@ -54,7 +54,7 @@ class Home extends Component {
               maxWidth: 200,
               Cell: row => (
                 <div>
-                <LinkContainer to={"/casas/"+row.value} className="btn btn-info button">
+                <LinkContainer to={"/casas/"+row.value} className="btn btn-info button disabled">
                   <i className="fa fa-pencil"/></LinkContainer>
                 <LinkContainer to={"/casas/" + row.value} className="btn btn-success button">
                   <i className="fa fa-eye"/></LinkContainer>

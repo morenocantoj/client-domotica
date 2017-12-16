@@ -24,7 +24,7 @@ class Navigator extends Component {
       <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#">IberRally</a>
+          <a href="#">IberRally <small>Beta</small></a>
         </Navbar.Brand>
       </Navbar.Header>
       <Nav>
@@ -35,9 +35,7 @@ class Navigator extends Component {
           <NavItem>Casas</NavItem>
         </LinkContainer>
         <NavDropdown title={this.props.user.name} id="basic-nav-dropdown">
-          <MenuItem>Action</MenuItem>
-          <MenuItem>Another action</MenuItem>
-          <MenuItem>Something else here</MenuItem>
+          <MenuItem className="disabled">Settings</MenuItem>
           <MenuItem divider />
           <MenuItem onClick={() => this.props.logout()}>Cerrar sesión</MenuItem>
         </NavDropdown>
