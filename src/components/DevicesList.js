@@ -6,6 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Modal } from 'react-bootstrap';
 import { deleteDevice } from '../API/methods';
 import { getController } from '../API/methods';
+import ReactInterval from 'react-interval';
 
 class DevicesList extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class DevicesList extends Component {
       showModalDelete: false,
       deviceId: 0,
       deviceName: "",
-      devices: this.props.devices
+      devices: this.props.devices,
+      timeout: 10000,
+      enabled: true
     }
   }
 
@@ -47,8 +50,13 @@ class DevicesList extends Component {
   }
 
   render() {
+    const timeout = this.state.timeout;
+    const enabled = this.state.enabled;
+
     return (
       <div>
+        <ReactInterval {...{timeout, enabled}}
+          callback={() => this.getDevices()}></ReactInterval>
         <ReactTable
           data= {this.state.devices}
           columns = {[
@@ -77,7 +85,7 @@ class DevicesList extends Component {
               Cell: row => (
                 <div>
                 <LinkContainer to={"/casas/"+row.value}>
-                  <Button className="btn btn-info disabled button"><i className="fa fa-pencil"/></Button>
+                  <Button className="btn btn-info button"><i className="fa fa-pencil"/></Button>
                   </LinkContainer>
                 <LinkContainer to={"/casas/" + row.value}>
                   <Button className="btn btn-success button"><i className="fa fa-eye"/></Button>

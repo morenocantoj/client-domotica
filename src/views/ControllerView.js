@@ -12,8 +12,19 @@ class ControllerView extends Component {
 
     this.state = {
       controller: {},
-      isLoading: false
+      isLoading: false,
     }
+  }
+
+  getController() {
+    getController(this.props.match.params.id, this.props.match.params.idController)
+    .then((controller) => {
+      this.setState({controller: controller, isLoading: false});
+    })
+    .catch((error) => {
+      console.log("Error retrieving data from server");
+    }
+  )
   }
 
   componentWillMount() {
@@ -35,8 +46,8 @@ class ControllerView extends Component {
         { this.state.isLoading ? null :
         <Col md={12}>
           <h2>Controlador <small>{this.state.controller.nombre}</small></h2>
-          <DevicesList {...this.props} devices={this.state.controller.dispositivos}
-            houseId={this.state.controller.casa_id} controllerId={this.state.controller.id}/>
+            <DevicesList {...this.props} devices={this.state.controller.dispositivos}
+              houseId={this.state.controller.casa_id} controllerId={this.state.controller.id}/>
         </Col>
         }
 
