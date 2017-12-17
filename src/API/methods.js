@@ -79,5 +79,26 @@ export const deleteDevice = (body) => {
     toastr.error("Dispostivo", "Ha habido un error eliminando el dispositivo");
     return error.json();
   });
+}
 
+export const editDevice = (body) => {
+  console.log("PUT device");
+  const url = API_URL+'/casas/'+body.houseId+'/controller/'+body.controllerId+'/regulador/'+body.deviceId;
+
+  return fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'Bearer ' + body.token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body.temperatura)
+
+  }).then(function (response) {
+    toastr.success("Dispositivo", "Temperatura editada correctamente");
+    return response.json();
+  })
+  .catch(function (error) {
+    toastr.error("Dispositivo", "Ha habido un error editando el dispositivo");
+    return error.json();
+  })
 }
