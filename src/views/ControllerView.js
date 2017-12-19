@@ -61,7 +61,8 @@ class ControllerView extends Component {
     });
   }
 
-  createDevice() {
+  createDevice(e) {
+    e.preventDefault();
     createDevice({token: this.props.user.token, houseId: this.props.match.params.id,
       controllerId: this.props.match.params.idController, nombre: this.state.nameDevice})
       .then((response) => {
@@ -105,11 +106,11 @@ class ControllerView extends Component {
 
         {/* Modal Create */}
         <Modal show={this.state.showModalCreate} onHide={() => {this.closeModalCreate() }}>
+          <form>
           <Modal.Header closeButton>
             <Modal.Title>Crear dispositivo</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
             <FormGroup>
               <ControlLabel>Tipo</ControlLabel>
               <FormControl componentClass="select" placeholder="select">
@@ -120,10 +121,9 @@ class ControllerView extends Component {
                 <ControlLabel>Nombre</ControlLabel>
                 <FormControl type="text" name="nameDevice" onChange={this.handleUserInput} placeholder="Nombre dispositivo"/>
             </FormGroup>
-            </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => { this.createDevice() }} className="btn btn-info"
+            <Button type="submit" onClick={(e) => { this.createDevice(e) }} className="btn btn-info"
               disabled={!this.state.formValid}>
               Crear
             </Button>
@@ -131,6 +131,7 @@ class ControllerView extends Component {
               Cancelar
             </Button>
           </Modal.Footer>
+          </form>
         </Modal>
       </div>
     )

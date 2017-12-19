@@ -60,7 +60,8 @@ class DevicesList extends Component {
       });
   }
 
-  deleteDevice() {
+  deleteDevice(e) {
+    e.preventDefault();
     deleteDevice({token: this.props.user.token, houseId: this.props.houseId,
       controllerId: this.props.controllerId, deviceId: this.state.deviceId})
       .then((response) => {
@@ -69,7 +70,8 @@ class DevicesList extends Component {
       })
   }
 
-  editDevice() {
+  editDevice(e) {
+    e.preventDefault();
     editDevice({token: this.props.user.token, houseId: this.props.houseId,
       controllerId: this.props.controllerId, deviceId: this.state.deviceId,
       temperatura: {temperatura: this.state.newValue}})
@@ -130,6 +132,7 @@ class DevicesList extends Component {
 
         {/* Modal Delete */}
         <Modal show={this.state.showModalDelete} onHide={() => {this.closeModalDelete() }}>
+          <form>
           <Modal.Header closeButton>
             <Modal.Title>Eliminar dispositivo {this.state.deviceId}</Modal.Title>
           </Modal.Header>
@@ -138,30 +141,30 @@ class DevicesList extends Component {
             <p>Todas las programaciones para este dispositivo serán anuladas</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => { this.deleteDevice() }} className="btn btn-info">
+            <Button type="submit" onClick={(e) => { this.deleteDevice(e) }} className="btn btn-info">
               Eliminar
             </Button>
             <Button onClick={() => {this.closeModalDelete() }} className="btn btn-default">
               Cancelar
             </Button>
           </Modal.Footer>
+          </form>
         </Modal>
 
         {/* Modal Edit */}
         <Modal show={this.state.showModalEdit} onHide={() => {this.closeModalEdit() }}>
+          <form>
           <Modal.Header closeButton>
             <Modal.Title>Editar dispositivo {this.state.deviceId}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
             <FormGroup>
                 <ControlLabel>Nueva temperatura (ºC)</ControlLabel>
                 <FormControl type="number" name="newValue" onChange={(e) => {this.handleUserEdit(e)}} placeholder="Temperatura"/>
             </FormGroup>
-            </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => { this.editDevice() }} className="btn btn-info"
+            <Button type="submit" onClick={(e) => { this.editDevice(e) }} className="btn btn-info"
               disabled={!this.state.formEditValid}>
               Editar
             </Button>
@@ -169,6 +172,7 @@ class DevicesList extends Component {
               Cancelar
             </Button>
           </Modal.Footer>
+          </form>
         </Modal>
       </div>
     )

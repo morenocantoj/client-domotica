@@ -64,7 +64,6 @@ class Login extends Component {
             <form>
                 <Col md={12} className="header-login">
                       <h1>Iniciar Sesión</h1>
-
                 </Col>
 
                     <Col md={4} lg={4} mdOffset={4} lgOffset={4}>
