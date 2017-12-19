@@ -5,7 +5,7 @@ Cliente en ReactJS de domótica para ADI
 ### Cliente en React
 - Ejecutar en el directorio del proyecto `npm install`
 - Cambiar la siguiente línea del archivo `start.js` dentro del directorio `node_modules/react-scripts/scripts/start.js`
-  - ```const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8080``` por ```const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8080```
+  - ```const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000``` por ```const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8080```
 - Ejecutar `npm start` para arrancar la aplicación en el navegador
 
 ### Servidor en Node
