@@ -117,7 +117,7 @@ class DevicesList extends Component {
                   <Button onClick={() => { this.setState({showModalEdit: true, deviceId: row.value}); }}
                     className="btn btn-info button"><i className="fa fa-pencil"/></Button>
                   <LinkContainer to={"/casas/" + row.value}>
-                    <Button className="btn btn-success button"><i className="fa fa-eye"/></Button>
+                    <Button disabled={true} className="btn btn-success button"><i className="fa fa-eye"/></Button>
                     </LinkContainer>
                   <Button onClick={() => { this.setState({showModalDelete: true, deviceId: row.value}); }}
                     className="btn btn-danger"><i className="fa fa-trash"></i></Button>

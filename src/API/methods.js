@@ -102,3 +102,26 @@ export const editDevice = (body) => {
     return error.json();
   })
 }
+
+export const createDevice = (body) => {
+  console.log("POST device");
+  const url = API_URL+'/casas/'+body.houseId+'/controller/'+body.controllerId;
+
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + body.token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({nombre: body.nombre})
+  }).then(function (response) {
+    console.log(response);
+    toastr.success("Dispostivo", "Dispositivo creado correctamente");
+    return response.json();
+
+  }).catch(function (error) {
+    toastr.error("Dispositivo", "Ha habido un error creando el dispositivo");
+    console.log(error);
+    return error;
+  })
+}
