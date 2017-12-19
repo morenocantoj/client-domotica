@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Redirect } from 'react-router-dom';
+import './styles/Navigator.css';
 
 class Navigator extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Navigator extends Component {
       return (<Redirect to="/login"></Redirect>)
     }
     return (
-      <Navbar>
+      <Navbar className="navbar">
       <Navbar.Header>
         <Navbar.Brand>
           <a href="#">IberRally <small>Beta</small></a>
@@ -30,9 +31,6 @@ class Navigator extends Component {
       <Nav>
         <LinkContainer exact to="/home">
           <NavItem>Inicio</NavItem>
-        </LinkContainer>
-        <LinkContainer exact to="/">
-          <NavItem>Casas</NavItem>
         </LinkContainer>
         <NavDropdown title={this.props.user.name} id="basic-nav-dropdown">
           <MenuItem className="disabled">Settings</MenuItem>

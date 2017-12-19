@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Login from '../components/Login';
-import logo from '../logo.svg';
+import logo from '../images/hondacivic.png';
 import { Button, Col, Row } from 'react-bootstrap';
 import Home from '../components/Home';
 import { Redirect } from 'react-router-dom';
