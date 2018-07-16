@@ -4,9 +4,7 @@ import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Modal, Form, FormControl, ControlLabel, FormGroup, Col } from 'react-bootstrap';
-import { deleteDevice } from '../API/methods';
-import { getController } from '../API/methods';
-import { editDevice } from '../API/methods';
+import { deleteDevice, getController, editDevice, editDeviceLight } from '../API/methods';
 import ReactInterval from 'react-interval';
 
 class DevicesList extends Component {
@@ -80,6 +78,22 @@ class DevicesList extends Component {
         this.getDevices();
       })
   }
+  
+  editDeviceLight(deviceId, status) {
+    // Change light value
+    if (status) {
+      status = false
+    } else {
+      status = true
+    }
+    
+    editDeviceLight({token: this.props.user.token, houseId: this.props.houseId,
+      controllerId: this.props.controllerId, deviceId: deviceId,
+      status: status})
+      .then((response) => {
+        this.getDevices();
+      })
+  }
 
   render() {
     const timeout = this.state.timeout;
@@ -94,13 +108,32 @@ class DevicesList extends Component {
           columns = {[
             {
               Header: "Tipo",
+              accessor: "tipo",
+              maxWidth: 140,
               Cell: row => (
-                <div>Aire Acondicionado</div>
+                <div>
+                  { row.value == "clima" ? 'Climatización' : 'Luz' }
+                </div>
               )
             },
             {
               Header: "Nombre",
-              accessor: "nombre"
+              accessor: "nombre",
+            },
+            {
+              Header: "Puerto GPIO",
+              accessor: "port",
+              maxWidth: 120,
+            },
+            {
+              Header: "Estado",
+              accessor: "status",
+              maxWidth: 120,
+              Cell: (row) => (
+                <div>{ row.value == true 
+                    ? <label style={{color: 'green'}}>Activo</label> 
+                    : <label style={{color: 'red'}}>Desconectado</label> }</div>
+              )
             },
             {
               Header: "Temperatura",
@@ -116,11 +149,13 @@ class DevicesList extends Component {
               maxWidth: 200,
               Cell: row => (
                 <div>
-                  <Button onClick={() => { this.setState({showModalEdit: true, deviceId: row.value}); }}
-                    className="btn btn-info button"><i className="fa fa-pencil"/></Button>
-                  <LinkContainer to={"/casas/" + row.value}>
-                    <Button disabled={true} className="btn btn-success button"><i className="fa fa-eye"/></Button>
-                    </LinkContainer>
+                  { row.row.tipo == "clima" 
+                    ? <Button onClick={() => { this.setState({showModalEdit: true, deviceId: row.value}); }}
+                      className="btn btn-info button"><i className="fa fa-pencil"/></Button> 
+                    : <Button onClick={() => { this.editDeviceLight(row.value, row.row.status) }}
+                      className="btn btn-info button"><i className="fa fa-power-off"/></Button>
+                  }
+                  
                   <Button onClick={() => { this.setState({showModalDelete: true, deviceId: row.value}); }}
                     className="btn btn-danger"><i className="fa fa-trash"></i></Button>
                 </div>
