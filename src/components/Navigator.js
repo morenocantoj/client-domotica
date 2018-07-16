@@ -3,6 +3,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-boots
 import { LinkContainer } from 'react-router-bootstrap';
 import { Redirect } from 'react-router-dom';
 import './styles/Navigator.css';
+import logo from '../images/light.png';
 
 class Navigator extends Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class Navigator extends Component {
       <Navbar className="navbar">
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#">IberRally <small>Beta</small></a>
+          <img src={logo} className="logo" alt="logo" />
+          <a className="title" href="#">Domoti-K</a>
         </Navbar.Brand>
       </Navbar.Header>
       <Nav>
