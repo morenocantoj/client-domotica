@@ -103,6 +103,31 @@ export const editDevice = (body) => {
   })
 }
 
+export const editDeviceLight = (body) => {
+  console.log("PUT device light");
+  const url = API_URL+'/casas/'+body.houseId+'/controller/'+body.controllerId+'/luz/'+body.deviceId;
+
+  return fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'Bearer ' + body.token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'status': body.status
+    })
+
+  }).then(function (response) {
+    if (response.status != "200") {
+      toastr.error("Dispositivo", "Ha habido un error activando/desactivando el dispositivo");
+    }
+  })
+  .catch(function (error) {
+    console.log(error)
+    return error;
+  })
+}
+
 export const createDevice = (body) => {
   console.log("POST device");
   const url = API_URL+'/casas/'+body.houseId+'/controller/'+body.controllerId;
