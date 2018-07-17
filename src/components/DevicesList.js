@@ -133,7 +133,7 @@ class DevicesList extends Component {
               Cell: (row) => (
                 <div>{ row.value == true 
                     ? <label style={{color: '#8BC34A'}}>Activo</label> 
-                    : <label style={{color: '#FF5722'}}>Desconectado</label> }</div>
+                    : <strong>Desconectado</strong> }</div>
               )
             },
             {
