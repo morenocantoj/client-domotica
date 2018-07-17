@@ -19,7 +19,7 @@ class ControllersList extends Component {
           columns = {[
             {
               Header: "Nombre",
-              accessor: "nombre"
+              accessor: "nombre",
             },
             {
               Header: "Acciones",
@@ -27,10 +27,16 @@ class ControllersList extends Component {
               maxWidth: 200,
               Cell: row => (
                 <div>
-                <LinkContainer to={"/casas/"+this.props.house.inmueble_id+"/controller/"+row.value} className="btn btn-info button disabled">
-                  <i className="fa fa-pencil"/></LinkContainer>
-                <LinkContainer to={"/casas/"+this.props.house.inmueble_id+"/controller/"+row.value} className="btn btn-success button">
-                  <i className="fa fa-eye"/></LinkContainer>
+                  <LinkContainer to='#'>
+                    <Button className="btn btn-accent button disabled">
+                        <i className="fa fa-pencil"/>
+                    </Button>
+                  </LinkContainer>
+                  <LinkContainer to={"/casas/"+this.props.house.inmueble_id+"/controller/"+row.value}>
+                    <Button className="btn btn-accent button">
+                        <i className="fa fa-eye"/>
+                      </Button>
+                  </LinkContainer>
                 </div>
               )
             }

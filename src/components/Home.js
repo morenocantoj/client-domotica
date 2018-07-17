@@ -68,14 +68,16 @@ class Home extends Component {
               maxWidth: 200,
               Cell: row => (
                 <div>
-                <Button className="btn btn-accent button disabled">
                   <LinkContainer to='#'>
-                    <i className="fa fa-pencil"/></LinkContainer>
-                </Button>
-                <Button className="btn btn-accent button">
+                    <Button className="btn btn-accent button disabled">
+                      <i className="fa fa-pencil"/>
+                    </Button>
+                  </LinkContainer>
                   <LinkContainer to={"/casas/" + row.value}>
-                    <i className="fa fa-eye"/></LinkContainer>
-                </Button>
+                    <Button className="btn btn-accent button">
+                      <i className="fa fa-eye"/>
+                    </Button>
+                  </LinkContainer>
                 </div>
               )
             }
