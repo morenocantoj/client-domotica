@@ -132,16 +132,27 @@ export const createDevice = (body) => {
   console.log("POST device");
   const url = API_URL+'/casas/'+body.houseId+'/controller/'+body.controllerId;
 
+  console.log(body)
+
   return fetch(url, {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer ' + body.token,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({nombre: body.nombre})
+    body: JSON.stringify({
+      nombre: body.nombre,
+      port: body.port,
+      type: body.type
+    })
   }).then(function (response) {
     console.log(response);
-    toastr.success("Dispostivo", "Dispositivo creado correctamente");
+    if (response.status == "201") {
+      toastr.success("Dispostivo", "Dispositivo creado correctamente");
+    } else {
+      console.log(response)
+      toastr.error("Dispostivo", "¡Error al crear el dispositivo!");
+    }
     return response.json();
 
   }).catch(function (error) {

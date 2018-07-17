@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Col, Row, Form, FormControl, ControlLabel, FormGroup } from 'react-bootstrap';
 import './styles/Login.css';
+import '../views/styles/main.css'
 
 class Login extends Component {
     constructor(props) {
@@ -69,18 +70,27 @@ class Login extends Component {
                     <Col md={4} lg={4} mdOffset={4} lgOffset={4}>
                         <FormGroup>
                             <ControlLabel>Usuario</ControlLabel>
-                            <FormControl type="text" name="login" placeholder="Dale ahí tu nombre hermano"
-                                onChange={this.handleUserInput}
-                                value={this.state.login}/>
+                            <FormControl
+                              type="text"
+                              name="login"
+                              placeholder="Nombre de usuario"
+                              onChange={this.handleUserInput}
+                              value={this.state.login}/>
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Contraseña</ControlLabel>
-                            <FormControl name="password" type="password"
-                            onChange={this.handleUserInput}
-                            value={this.state.password}/>
+                            <FormControl
+                              name="password"
+                              type="password"
+                              placeholder="Contraseña"
+                              onChange={this.handleUserInput}
+                              value={this.state.password}/>
                         </FormGroup>
                         <FormGroup>
-                            <Button type="submit" className="btn-info" onClick={(e) => this.handleLogin(e)}
+                            <Button
+                              type="submit"
+                              className="btn-normal"
+                              onClick={(e) => this.handleLogin(e)}
                               disabled={!this.state.formValid}>
                                 Iniciar Sesión</Button>
                         </FormGroup>

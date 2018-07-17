@@ -6,6 +6,7 @@ import ReactTable from 'react-table';
 import { LinkContainer } from 'react-router-bootstrap';
 import "react-table/react-table.css";
 import {Redirect} from 'react-router-dom'
+import '../views/styles/main.css'
 
 class Home extends Component {
 
@@ -49,15 +50,34 @@ class Home extends Component {
               accessor: "nombre"
             },
             {
+              Header: "Localidad",
+              accessor: "poblacion"
+            },
+            {
+              Header: "Dirección",
+              accessor: "direccion"
+            },
+            {
+              Header: "Código Postal",
+              accessor: "codigo_postal",
+              maxWidth: 100
+            },
+            {
               Header: "Acciones",
               accessor: "id",
               maxWidth: 200,
               Cell: row => (
                 <div>
-                <LinkContainer to={"/casas/"+row.value} className="btn btn-info button disabled">
-                  <i className="fa fa-pencil"/></LinkContainer>
-                <LinkContainer to={"/casas/" + row.value} className="btn btn-success button">
-                  <i className="fa fa-eye"/></LinkContainer>
+                  <LinkContainer to='#'>
+                    <Button className="btn btn-accent button disabled">
+                      <i className="fa fa-pencil"/>
+                    </Button>
+                  </LinkContainer>
+                  <LinkContainer to={"/casas/" + row.value}>
+                    <Button className="btn btn-accent button">
+                      <i className="fa fa-eye"/>
+                    </Button>
+                  </LinkContainer>
                 </div>
               )
             }
