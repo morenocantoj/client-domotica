@@ -3,6 +3,7 @@ import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { Button, Col, Row } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import '../views/styles/main.css'
 
 class ControllersList extends Component {
   constructor(props) {

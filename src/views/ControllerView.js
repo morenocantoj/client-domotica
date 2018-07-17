@@ -6,6 +6,7 @@ import { Button, Col, Row, Modal, Form, FormControl, ControlLabel, FormGroup } f
 import DevicesList from '../components/DevicesList';
 import { getController } from '../API/methods';
 import { createDevice } from '../API/methods';
+import '../views/styles/main.css'
 
 class ControllerView extends Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class ControllerView extends Component {
         { this.state.isLoading ? null :
         <Col md={12}>
           <h2>Controlador <small>{this.state.controller.nombre}</small>
-            <Button onClick={() => { this.setState({showModalCreate: true}) }} className="btn btn-primary margin-left">
+            <Button onClick={() => { this.setState({showModalCreate: true}) }} className="btn btn-normal margin-left">
               Añadir dispositivo</Button>
           </h2>
             <DevicesList {...this.props} devices={this.state.controller.dispositivos}
@@ -123,11 +124,11 @@ class ControllerView extends Component {
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit" onClick={(e) => { this.createDevice(e) }} className="btn btn-info"
+            <Button type="submit" onClick={(e) => { this.createDevice(e) }} className="btn btn-normal"
               disabled={!this.state.formValid}>
               Crear
             </Button>
-            <Button onClick={() => { this.closeModalCreate() }} className="btn btn-default">
+            <Button onClick={() => { this.closeModalCreate() }} className="btn btn-escape">
               Cancelar
             </Button>
           </Modal.Footer>

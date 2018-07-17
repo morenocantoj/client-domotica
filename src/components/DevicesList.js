@@ -6,6 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Modal, Form, FormControl, ControlLabel, FormGroup, Col } from 'react-bootstrap';
 import { deleteDevice, getController, editDevice, editDeviceLight } from '../API/methods';
 import ReactInterval from 'react-interval';
+import '../views/styles/main.css'
 
 class DevicesList extends Component {
   constructor(props) {
@@ -131,8 +132,8 @@ class DevicesList extends Component {
               maxWidth: 120,
               Cell: (row) => (
                 <div>{ row.value == true 
-                    ? <label style={{color: 'green'}}>Activo</label> 
-                    : <label style={{color: 'red'}}>Desconectado</label> }</div>
+                    ? <label style={{color: '#8BC34A'}}>Activo</label> 
+                    : <label style={{color: '#FF5722'}}>Desconectado</label> }</div>
               )
             },
             {
@@ -151,9 +152,9 @@ class DevicesList extends Component {
                 <div>
                   { row.row.tipo == "clima" 
                     ? <Button onClick={() => { this.setState({showModalEdit: true, deviceId: row.value}); }}
-                      className="btn btn-info button"><i className="fa fa-pencil"/></Button> 
+                      className="btn btn-normal button"><i className="fa fa-pencil"/></Button> 
                     : <Button onClick={() => { this.editDeviceLight(row.value, row.row.status) }}
-                      className="btn btn-info button"><i className="fa fa-power-off"/></Button>
+                      className="btn btn-on button"><i className="fa fa-power-off"/></Button>
                   }
                   
                   <Button onClick={() => { this.setState({showModalDelete: true, deviceId: row.value}); }}
@@ -176,10 +177,10 @@ class DevicesList extends Component {
             <p>Todas las programaciones para este dispositivo serán anuladas</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit" onClick={(e) => { this.deleteDevice(e) }} className="btn btn-info">
+            <Button type="submit" onClick={(e) => { this.deleteDevice(e) }} className="btn btn-danger">
               Eliminar
             </Button>
-            <Button onClick={() => {this.closeModalDelete() }} className="btn btn-default">
+            <Button onClick={() => {this.closeModalDelete() }} className="btn btn-escape">
               Cancelar
             </Button>
           </Modal.Footer>
@@ -199,11 +200,11 @@ class DevicesList extends Component {
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit" onClick={(e) => { this.editDevice(e) }} className="btn btn-info"
+            <Button type="submit" onClick={(e) => { this.editDevice(e) }} className="btn btn-normal"
               disabled={!this.state.formEditValid}>
               Editar
             </Button>
-            <Button onClick={() => {this.closeModalEdit() }} className="btn btn-default">
+            <Button onClick={() => {this.closeModalEdit() }} className="btn btn-escape">
               Cancelar
             </Button>
           </Modal.Footer>
