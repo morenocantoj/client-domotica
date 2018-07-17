@@ -4,6 +4,7 @@ import logo from '../images/light.png';
 import { Button, Col, Row } from 'react-bootstrap';
 import Home from '../components/Home';
 import { Redirect } from 'react-router-dom';
+import '../views/styles/main.css'
 
 class LoginView extends Component {
   render () {
